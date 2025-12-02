@@ -160,6 +160,7 @@ $VCFAutomationClusterCIDR = "198.18.0.0/15"
 # VCF Workload Domain Configurations
 $VCFWorkloadDomainName = "w01"
 $VCFWorkloadDomainOrgName = "w01"
+$VCFWorkloadDomainPoolName = "wld-networkpool"
 $VCFWorkloadDomainEnableVCLM = $true
 $VCFWorkloadDomainEnableVSANESA = $true
 

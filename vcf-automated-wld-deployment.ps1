@@ -35,8 +35,6 @@ $verboseLogFile = "vcf-workload-domain-deployment.log"
 
 $sddcManagerFQDN = "${SddcManagerHostname}.${VMDomain}"
 
-"networkPoolName" = "$VCFWorkloadDomainPoolName";
-
 $StartTime = Get-Date
 
 Function My-Logger {
@@ -505,8 +503,8 @@ if($generateWldHostCommissionJson -eq 1) {
     try {
         $networkPoolResponse = Invoke-WebRequest -Uri "https://${SddcManagerIP}/v1/network-pools" -Method GET -SkipCertificateCheck -Headers $headers
         $networkPools = ($networkPoolResponse.Content | ConvertFrom-Json).elements
-        $mgmtPoolId = ($networkPools | where {$_.name -match $DeploymentId} | Select-Object -First 1).id
-        My-Logger "Found network pool ID: $mgmtPoolId"
+        $wldPoolId = ($networkPools | where {$_.name -eq $VCFWorkloadDomainPoolName} | Select-Object -First 1).id
+        My-Logger "Found WLD network pool ID: $wldPoolId for pool name: $VCFWorkloadDomainPoolName"
     } catch {
         My-Logger "Failed to retrieve network pools" "red"
         Write-Error "`n($_.Exception.Message)`n"
@@ -528,7 +526,7 @@ if($generateWldHostCommissionJson -eq 1) {
             "fqdn" = $hostFQDN;
             "username" = "root";
             "password" = $VMPassword;
-            "networkPoolName" = "$VCFManagementDomainPoolName";
+            "networkPoolName" = "$VCFWorkloadDomainPoolName";
             "storageType" = $storageType;
         }
         $commissionHostsUI += $tmp1
@@ -537,7 +535,7 @@ if($generateWldHostCommissionJson -eq 1) {
             "fqdn" = $hostFQDN;
             "username" = "root";
             "password" = $VMPassword;
-            "networkPoolId" = $mgmtPoolId;
+            "networkPoolId" = $wldPoolId;
             "storageType" = $storageType;
         }
         $commissionHostsAPI += $tmp2
