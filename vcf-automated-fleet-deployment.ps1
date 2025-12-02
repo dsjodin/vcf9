@@ -597,8 +597,8 @@ if($deployNestedESXiVMsForMgmt -eq 1) {
         $ovfconfig.common.guestinfo.hostname.value = "${VMName}.${VMDomain}"
         $ovfconfig.common.guestinfo.ipaddress.value = $VMIPAddress
         $ovfconfig.common.guestinfo.netmask.value = $VMNetmask
-        $ovfconfig.common.guestinfo.gateway.value = $VMMGMTGateway
-        $ovfconfig.common.guestinfo.vlan.value = $VMMGMTVLAN
+        $ovfconfig.common.guestinfo.gateway.value = $ESXMGMTGateway
+        $ovfconfig.common.guestinfo.vlan.value = $ESXMGMTVLAN
         $ovfconfig.common.guestinfo.dns.value = $VMDNS
         $ovfconfig.common.guestinfo.domain.value = $VMDomain
         $ovfconfig.common.guestinfo.ntp.value = $VMNTP
@@ -662,8 +662,8 @@ if($deployNestedESXiVMsForWLD -eq 1) {
         $ovfconfig.common.guestinfo.hostname.value = "${VMName}.${VMDomain}"
         $ovfconfig.common.guestinfo.ipaddress.value = $VMIPAddress
         $ovfconfig.common.guestinfo.netmask.value = $VMNetmask
-        $ovfconfig.common.guestinfo.gateway.value = $VMWLDGateway
-        $ovfconfig.common.guestinfo.vlan.value = $VMWLDVLAN
+        $ovfconfig.common.guestinfo.gateway.value = $ESXWLDGateway
+        $ovfconfig.common.guestinfo.vlan.value = $ESXWLDVLAN
         $ovfconfig.common.guestinfo.dns.value = $VMDNS
         $ovfconfig.common.guestinfo.domain.value = $VMDomain
         $ovfconfig.common.guestinfo.ntp.value = $VMNTP
@@ -1120,3 +1120,4 @@ My-Logger "`tStartTime: $StartTime" -color cyan
 My-Logger "`tEndTime: $EndTime" -color cyan
 
 My-Logger "`tDuration: $duration minutes to deploy VCF Installer, Nested ESX VMs & start $VCFInstallerProductSKU Deployment" -color cyan
+
