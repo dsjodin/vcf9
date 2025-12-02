@@ -930,16 +930,16 @@ if($generateMgmtJson -eq 1) {
             [ordered]@{
                 "networkType" = "MANAGEMENT"
                 "subnet" = $NestedMGMTESXiManagementNetworkCidr
-                "gateway" = $VMMGMTGateway
+                "gateway" = $ESXMGMTGateway
                 "subnetMask" = $null
                 "includeIpAddress" = $null
                 "includeIpAddressRanges" = $null
-                "vlanId" = $VMMGMTVLAN
+                "vlanId" = $ESXMGMTVLAN
                 "mtu" = "1500"
                 "teamingPolicy" = "loadbalance_loadbased"
                 "activeUplinks" = @("uplink1","uplink2")
                 "standbyUplinks" = @()
-                "portGroupKey" = "DVPG_FOR_MANAGEMENT"
+                "portGroupKey" = "ESX_MANAGEMENT"
             }
             [ordered]@{
                 "networkType" = "VM_MANAGEMENT"
@@ -953,7 +953,7 @@ if($generateMgmtJson -eq 1) {
                 "teamingPolicy" = "loadbalance_loadbased"
                 "activeUplinks" = @("uplink1","uplink2")
                 "standbyUplinks" = @()
-                "portGroupKey" = "DVPG_FOR_VM_MANAGEMENT"
+                "portGroupKey" = "VM_MANAGEMENT"
             }
             [ordered]@{
                 "networkType" = "VMOTION"
@@ -967,7 +967,7 @@ if($generateMgmtJson -eq 1) {
                 "teamingPolicy" = "loadbalance_loadbased"
                 "activeUplinks" = @("uplink1","uplink2")
                 "standbyUplinks" = @()
-                "portGroupKey" = "DVPG_FOR_VMOTION"
+                "portGroupKey" = "vMotion"
             }
             [ordered]@{
                 "networkType" = "VSAN"
@@ -981,7 +981,7 @@ if($generateMgmtJson -eq 1) {
                 "mtu" = "8900"
                 "activeUplinks" = @("uplink1","uplink2")
                 "standbyUplinks" = @()
-                "portGroupKey" = "DVPG_FOR_VSAN"
+                "portGroupKey" = "vSAN"
             }
         )
         $vdsSpec = @(
@@ -1118,4 +1118,5 @@ $duration = [math]::Round((New-TimeSpan -Start $StartTime -End $EndTime).TotalMi
 My-Logger "$VCFInstallerProductSKU 9 Lab Deployment Complete!"
 My-Logger "`tStartTime: $StartTime" -color cyan
 My-Logger "`tEndTime: $EndTime" -color cyan
+
 My-Logger "`tDuration: $duration minutes to deploy VCF Installer, Nested ESX VMs & start $VCFInstallerProductSKU Deployment" -color cyan
