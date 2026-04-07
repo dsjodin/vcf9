@@ -1,0 +1,58 @@
+
+
+#==============================================================================
+# BGP CONFIGURATION FOR NSX TIER-0 PEERING
+#==============================================================================
+# VyOS acts as the upstream router for NSX Tier-0 gateways
+# ASN 65000 for VyOS, ASN 65001 for MGMT Tier-0, ASN 65002 for WLD Tier-0
+
+# Set VyOS BGP ASN
+set protocols bgp system-as '65000'
+set protocols bgp parameters router-id '10.255.255.1'
+
+# ---- MGMT Domain Tier-0 BGP Neighbors ----
+# Uplink 1 (VLAN 90)
+set protocols bgp neighbor 10.2.90.2 remote-as '65001'
+set protocols bgp neighbor 10.2.90.2 description 'MGMT-T0-Edge1-Uplink1'
+set protocols bgp neighbor 10.2.90.2 address-family ipv4-unicast
+
+set protocols bgp neighbor 10.2.90.3 remote-as '65001'
+set protocols bgp neighbor 10.2.90.3 description 'MGMT-T0-Edge2-Uplink1'
+set protocols bgp neighbor 10.2.90.3 address-family ipv4-unicast
+
+# Uplink 2 (VLAN 91) - comment out if using single uplink
+set protocols bgp neighbor 10.2.91.2 remote-as '65001'
+set protocols bgp neighbor 10.2.91.2 description 'MGMT-T0-Edge1-Uplink2'
+set protocols bgp neighbor 10.2.91.2 address-family ipv4-unicast
+
+set protocols bgp neighbor 10.2.91.3 remote-as '65001'
+set protocols bgp neighbor 10.2.91.3 description 'MGMT-T0-Edge2-Uplink2'
+set protocols bgp neighbor 10.2.91.3 address-family ipv4-unicast
+
+# ---- WLD Domain Tier-0 BGP Neighbors ----
+# Uplink 1 (VLAN 90)
+set protocols bgp neighbor 10.2.90.4 remote-as '65002'
+set protocols bgp neighbor 10.2.90.4 description 'WLD-T0-Edge1-Uplink1'
+set protocols bgp neighbor 10.2.90.4 address-family ipv4-unicast
+
+set protocols bgp neighbor 10.2.90.5 remote-as '65002'
+set protocols bgp neighbor 10.2.90.5 description 'WLD-T0-Edge2-Uplink1'
+set protocols bgp neighbor 10.2.90.5 address-family ipv4-unicast
+
+# Uplink 2 (VLAN 91) - comment out if using single uplink
+set protocols bgp neighbor 10.2.91.4 remote-as '65002'
+set protocols bgp neighbor 10.2.91.4 description 'WLD-T0-Edge1-Uplink2'
+set protocols bgp neighbor 10.2.91.4 address-family ipv4-unicast
+
+set protocols bgp neighbor 10.2.91.5 remote-as '65002'
+set protocols bgp neighbor 10.2.91.5 description 'WLD-T0-Edge2-Uplink2'
+set protocols bgp neighbor 10.2.91.5 address-family ipv4-unicast
+
+# Advertise local networks to NSX
+set protocols bgp address-family ipv4-unicast network 10.2.100.0/24
+set protocols bgp address-family ipv4-unicast network 10.2.101.0/24
+set protocols bgp address-family ipv4-unicast network 10.2.200.0/24
+set protocols bgp address-family ipv4-unicast network 10.1.10.0/24
+
+# Redistribute connected routes (optional - makes all VyOS networks available)
+set protocols bgp address-family ipv4-unicast redistribute connected

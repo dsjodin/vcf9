@@ -1,0 +1,66 @@
+#############################################
+# VyOS Interface Configuration - CREATE
+#############################################
+
+
+set interfaces ethernet eth0 vif 100 address '10.2.100.1/24'
+set interfaces ethernet eth0 vif 100 description 'MGMT ESX mgmt'
+
+set interfaces ethernet eth0 vif 101 address '10.2.101.1/24'
+set interfaces ethernet eth0 vif 101 description 'VM Mangement'
+
+set interfaces ethernet eth0 vif 102 address '10.2.102.1/24'
+set interfaces ethernet eth0 vif 102 description 'MGMT vMotion'
+
+set interfaces ethernet eth0 vif 103 address '10.2.103.1/24'
+set interfaces ethernet eth0 vif 103 description 'MGMT vSAN'
+
+set interfaces ethernet eth0 vif 104 address '10.2.104.1/24'
+set interfaces ethernet eth0 vif 104 description 'MGMT Host TEP'
+
+set interfaces ethernet eth0 vif 105 address '10.2.105.1/24'
+set interfaces ethernet eth0 vif 105 description 'MGMT Edge TEP'
+
+set interfaces ethernet eth0 vif 200 address '10.2.200.1/24'
+set interfaces ethernet eth0 vif 200 description 'MGMT ESX mgmt'
+
+set interfaces ethernet eth0 vif 201 address '10.2.201.1/24'
+set interfaces ethernet eth0 vif 201 description 'WLD vMotion'
+
+set interfaces ethernet eth0 vif 202 address '10.2.202.1/24'
+set interfaces ethernet eth0 vif 202 description 'WLD vSAN'
+
+set interfaces ethernet eth0 vif 203 address '10.2.203.1/24'
+set interfaces ethernet eth0 vif 203 description 'WLD Host TEP'
+
+set interfaces ethernet eth0 vif 204 address '10.2.204.1/24'
+set interfaces ethernet eth0 vif 204 description 'WLD Edge TEP'
+
+set interfaces ethernet eth0 vif 205 address '10.2.205.1/24'
+set interfaces ethernet eth0 vif 205 description 'WLD Service k8s'
+
+# Commit and Save
+commit
+save
+
+
+#############################################
+# VyOS Interface Configuration - DELETE
+#############################################
+
+# Delete eth0 VLAN Interfaces
+delete interfaces ethernet eth0 vif 100
+delete interfaces ethernet eth0 vif 101
+delete interfaces ethernet eth0 vif 102
+delete interfaces ethernet eth0 vif 103
+delete interfaces ethernet eth0 vif 104
+delete interfaces ethernet eth0 vif 200
+delete interfaces ethernet eth0 vif 201
+delete interfaces ethernet eth0 vif 202
+delete interfaces ethernet eth0 vif 203
+delete interfaces ethernet eth0 vif 204
+delete interfaces ethernet eth0 vif 205
+
+# Commit and Save
+commit
+save
