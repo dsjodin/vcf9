@@ -1,0 +1,76 @@
+# VyOS Configuration for Shared VCF/VVF Environment
+# Generated: 2025-11-21 10:14:33
+
+# Copy and paste these commands into VyOS configuration mode
+
+configure
+
+# VCF Networks
+# ------------
+
+# VCF ESXi Management Network - VLAN 2100
+set interfaces ethernet eth0 vif 2100 address '10.2.100.1/24'
+set interfaces ethernet eth0 vif 2100 description 'VCF ESXi MGMT (10.2.100.0/24)'
+
+# VCF vMotion Network - VLAN 2110
+set interfaces ethernet eth0 vif 2110 address '10.2.110.1/24'
+set interfaces ethernet eth0 vif 2110 description 'VCF vMotion (10.2.110.0/24)'
+
+# VCF vSAN Network - VLAN 2120
+set interfaces ethernet eth0 vif 2120 address '10.2.120.1/24'
+set interfaces ethernet eth0 vif 2120 description 'VCF vSAN (10.2.120.0/24)'
+
+# VCF HOST TEP Network - VLAN 2130
+set interfaces ethernet eth0 vif 2130 address '10.2.130.1/24'
+set interfaces ethernet eth0 vif 2130 description 'VCF HOST TEP (10.2.130.0/24)'
+
+# VCF EDGE TEP Network - VLAN 2140
+set interfaces ethernet eth0 vif 2140 address '10.2.140.1/24'
+set interfaces ethernet eth0 vif 2140 description 'VCF EDGE TEP (10.2.140.0/24)'
+
+# VCF EDGE UPLINK 1 Network - VLAN 2150
+set interfaces ethernet eth0 vif 2150 address '192.168.168.0/31'
+set interfaces ethernet eth0 vif 2150 description 'VCF EDGE UPLINK 1 (192.168.168.0/31)'
+
+# VCF EDGE UPLINK 2 Network - VLAN 2160
+set interfaces ethernet eth0 vif 2160 address '192.168.68.0/31'
+set interfaces ethernet eth0 vif 2160 description 'VCF EDGE UPLINK 2 (192.168.68.0/31)'
+
+# BGP Configuration
+# -----------------
+set protocols bgp system-as 65000
+set protocols bgp neighbor 192.168.168.1 remote-as 65001
+set protocols bgp neighbor 192.168.168.1 password 'VMware1!'
+set protocols bgp neighbor 192.168.168.3 remote-as 65001
+set protocols bgp neighbor 192.168.168.3 password 'VMware1!'
+set protocols bgp neighbor 192.168.168.5 remote-as 65002
+set protocols bgp neighbor 192.168.168.5 password 'VMware1!'
+set protocols bgp neighbor 192.168.168.7 remote-as 65002
+set protocols bgp neighbor 192.168.168.7 password 'VMware1!'
+set protocols bgp neighbor 192.168.68.1 remote-as 65001
+set protocols bgp neighbor 192.168.68.1 password 'VMware1!'
+set protocols bgp neighbor 192.168.68.3 remote-as 65001
+set protocols bgp neighbor 192.168.68.3 password 'VMware1!'
+set protocols bgp neighbor 192.168.68.5 remote-as 65002
+set protocols bgp neighbor 192.168.68.5 password 'VMware1!'
+set protocols bgp neighbor 192.168.68.7 remote-as 65002
+set protocols bgp neighbor 192.168.68.7 password 'VMware1!'
+
+# VVF Networks
+# ------------
+
+# VVF ESXi Management Network - VLAN 3100
+set interfaces ethernet eth0 vif 3100 address '10.3.100.1/24'
+set interfaces ethernet eth0 vif 3100 description 'VVF ESXi MGMT (10.3.100.0/24)'
+
+# VVF vMotion Network - VLAN 3110
+set interfaces ethernet eth0 vif 3110 address '10.3.110.1/24'
+set interfaces ethernet eth0 vif 3110 description 'VVF vMotion (10.3.110.0/24)'
+
+# VVF vSAN Network - VLAN 3120
+set interfaces ethernet eth0 vif 3120 address '10.3.120.1/24'
+set interfaces ethernet eth0 vif 3120 description 'VVF vSAN (10.3.120.0/24)'
+
+# Save and commit
+# commit
+# save

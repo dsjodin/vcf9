@@ -1,0 +1,25 @@
+{
+  "hosts": [
+    {
+      "fqdn": "esx05.vcf.lab.io",
+      "username": "root",
+      "password": "VMwareVCF9!",
+      "networkPoolName": "w01-np01",
+      "storageType": "VSAN_ESA"
+    },
+    {
+      "fqdn": "esx06.vcf.lab.io",
+      "username": "root",
+      "password": "VMwareVCF9!",
+      "networkPoolName": "w01-np01",
+      "storageType": "VSAN_ESA"
+    },
+    {
+      "fqdn": "esx07.vcf.lab.io",
+      "username": "root",
+      "password": "VMwareVCF9!",
+      "networkPoolName": "w01-np01",
+      "storageType": "VSAN_ESA"
+    }
+  ]
+}

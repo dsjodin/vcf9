@@ -1,0 +1,140 @@
+{
+  "domainName": "w01",
+  "orgName": "w01",
+  "deployWithoutLicenseKeys": true,
+  "vcenterSpec": {
+    "rootPassword": "VMware1!VMware1!",
+    "networkDetailsSpec": {
+      "subnetMask": "255.255.255.0",
+      "ipAddress": "10.1.101.200",
+      "dnsName": "wld-vc.vcf.lab.io",
+      "gateway": null
+    },
+    "name": "wld-vc",
+    "datacenterName": "wld-dc"
+  },
+  "ssoDomainSpec": {
+    "ssoDomainName": "vsphere.local",
+    "ssoDomainPassword": "VMware1!VMware1!"
+  },
+  "computeSpec": {
+    "clusterSpecs": [
+      {
+        "name": "wld-cl01",
+        "hostSpecs": [
+          {
+            "id": "aaff5ac4-cf0f-4b5f-97b8-e7e119bbe019",
+            "hostNetworkSpec": {
+              "vmNics": [
+                {
+                  "vdsName": "wld-cl01-vds01",
+                  "id": "vmnic0"
+                },
+                {
+                  "vdsName": "wld-cl01-vds01",
+                  "id": "vmnic1"
+                }
+              ]
+            }
+          },
+          {
+            "id": "5248040e-c897-43e8-9bf4-33deee25a4d1",
+            "hostNetworkSpec": {
+              "vmNics": [
+                {
+                  "vdsName": "wld-cl01-vds01",
+                  "id": "vmnic0"
+                },
+                {
+                  "vdsName": "wld-cl01-vds01",
+                  "id": "vmnic1"
+                }
+              ]
+            }
+          },
+          {
+            "id": "a6e79329-11e5-4fec-8f0b-91b66904b0da",
+            "hostNetworkSpec": {
+              "vmNics": [
+                {
+                  "vdsName": "wld-cl01-vds01",
+                  "id": "vmnic0"
+                },
+                {
+                  "vdsName": "wld-cl01-vds01",
+                  "id": "vmnic1"
+                }
+              ]
+            }
+          }
+        ],
+        "datastoreSpec": {
+          "vsanDatastoreSpec": {
+            "datastoreName": "wld-cl01-vsan01",
+            "esaConfig": {
+              "enabled": true
+            }
+          }
+        },
+        "networkSpec": {
+          "nsxClusterSpec": {
+            "nsxTClusterSpec": {
+              "geneveVlanId": 203,
+              "ipAddressPoolSpec": {
+                "name": "wld-pool",
+                "subnets": [
+                  {
+                    "cidr": "10.2.203.0/24",
+                    "gateway": "10.2.203.1",
+                    "ipAddressPoolRanges": [
+                      {
+                        "start": "10.2.203.10",
+                        "end": "10.2.203.50"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "vdsSpecs": [
+            {
+              "name": "wld-cl01-vds01",
+              "portGroupSpecs": [
+                {
+                  "name": "wld-cl01-vds01-management",
+                  "transportType": "MANAGEMENT"
+                },
+                {
+                  "name": "wld-cl01-vds01-vmotion",
+                  "transportType": "VMOTION"
+                },
+                {
+                  "name": "wld-cl01-vds01-vsan",
+                  "transportType": "VSAN"
+                }
+              ]
+            }
+          ]
+        },
+        "clusterImageId": "3ae2cf24-fb9f-4605-a5e7-20d30f0a99eb"
+      }
+    ]
+  },
+  "nsxTSpec": {
+    "nsxManagerSpecs": [
+      {
+        "name": "nsx02a",
+        "networkDetailsSpec": {
+          "subnetMask": "255.255.255.0",
+          "ipAddress": "10.2.200.201",
+          "dnsName": "nsx02a.vcf.lab.io",
+          "gateway": null
+        }
+      }
+    ],
+    "formFactor": "medium",
+    "vipFqdn": "nsx02.vcf.lab.io",
+    "nsxManagerAdminPassword": "VMware1!VMware1!"
+  }
+}

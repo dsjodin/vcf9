@@ -1,0 +1,23 @@
+[
+  {
+    "fqdn": "esx05.vcf.lab.io",
+    "username": "root",
+    "password": "VMwareVCF9!",
+    "networkPoolId": "5fdd85b7-6a90-4270-951b-f60fc6856a55",
+    "storageType": "VSAN_ESA"
+  },
+  {
+    "fqdn": "esx06.vcf.lab.io",
+    "username": "root",
+    "password": "VMwareVCF9!",
+    "networkPoolId": "5fdd85b7-6a90-4270-951b-f60fc6856a55",
+    "storageType": "VSAN_ESA"
+  },
+  {
+    "fqdn": "esx07.vcf.lab.io",
+    "username": "root",
+    "password": "VMwareVCF9!",
+    "networkPoolId": "5fdd85b7-6a90-4270-951b-f60fc6856a55",
+    "storageType": "VSAN_ESA"
+  }
+]

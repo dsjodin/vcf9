@@ -1,0 +1,72 @@
+{
+  "edgeClusterName": "m01-ec01",
+  "edgeClusterProfileType": "DEFAULT",
+  "edgeClusterType": "NSX-T",
+  "edgeRootPassword": "VMware1!VMware1!",
+  "edgeAdminPassword": "VMware1!VMware1!",
+  "edgeAuditPassword": "VMware1!VMware1!",
+  "edgeFormFactor": "MEDIUM",
+  "tier0ServicesHighAvailability": "ACTIVE_ACTIVE",
+  "mtu": 8900,
+  "asn": 65001,
+  "edgeNodeSpecs": [
+    {
+      "edgeNodeName": "m01edge01.vcf.lab.io",
+      "managementIP": "10.2.101.150/24",
+      "managementGateway": "10.2.101.1",
+      "edgeTepGateway": "10.2.105.1",
+      "edgeTep1IP": "10.2.105.10/24",
+      "edgeTep2IP": "10.2.105.11/24",
+      "edgeTepVlan": 105,
+      "clusterId": "7a24e974-f6b1-4f6c-a6d8-96f15116777a",
+      "interRackCluster": false,
+      "uplinkNetwork": [
+        {
+          "peerIP": "10.2.90.1/24",
+          "bgpPeerPassword": "",
+          "asnPeer": 65000,
+          "uplinkVlan": 90,
+          "uplinkInterfaceIP": "10.2.90.2/24"
+        },
+        {
+          "peerIP": "10.2.91.1/24",
+          "bgpPeerPassword": "",
+          "asnPeer": 65000,
+          "uplinkVlan": 91,
+          "uplinkInterfaceIP": "10.2.91.2/24"
+        }
+      ]
+    },
+    {
+      "edgeNodeName": "m01edge02.vcf.lab.io",
+      "managementIP": "10.2.101.151/24",
+      "managementGateway": "10.2.101.1",
+      "edgeTepGateway": "10.2.105.1",
+      "edgeTep1IP": "10.2.105.12/24",
+      "edgeTep2IP": "10.2.105.13/24",
+      "edgeTepVlan": 105,
+      "clusterId": "7a24e974-f6b1-4f6c-a6d8-96f15116777a",
+      "interRackCluster": false,
+      "uplinkNetwork": [
+        {
+          "peerIP": "10.2.90.1/24",
+          "bgpPeerPassword": "",
+          "asnPeer": 65000,
+          "uplinkVlan": 90,
+          "uplinkInterfaceIP": "10.2.90.3/24"
+        },
+        {
+          "peerIP": "10.2.91.1/24",
+          "bgpPeerPassword": "",
+          "asnPeer": 65000,
+          "uplinkVlan": 91,
+          "uplinkInterfaceIP": "10.2.91.3/24"
+        }
+      ]
+    }
+  ],
+  "tier0RoutingType": "EBGP",
+  "tier0Name": "m01-t0-gw01",
+  "tier1Name": "m01-ec01-t1-gw01",
+  "tier1Unhosted": false
+}

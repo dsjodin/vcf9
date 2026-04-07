@@ -1,0 +1,282 @@
+{
+  "sddcId": "m01",
+  "vcfInstanceName": "VCF9 Lab Instance",
+  "workflowType": "VCF",
+  "version": "9.0.1.0",
+  "ceipEnabled": false,
+  "fipsEnabled": false,
+  "skipEsxThumbprintValidation": true,
+  "skipGatewayPingValidation": true,
+  "sddcManagerSpec": {
+    "rootUserCredentials": {
+      "username": "root",
+      "password": "VMware1!VMware1!"
+    },
+    "secondUserCredentials": {
+      "username": "vcf",
+      "password": "VMware1!VMware1!"
+    },
+    "hostname": "sddcm01",
+    "useExistingDeployment": false,
+    "rootPassword": "VMware1!VMware1!",
+    "sshPassword": "VMware1!VMware1!",
+    "localUserPassword": "VMware1!VMware1!"
+  },
+  "dnsSpec": {
+    "nameservers": [
+      "10.1.10.10"
+    ],
+    "subdomain": "vcf.lab.io"
+  },
+  "ntpServers": [
+    "10.1.10.1"
+  ],
+  "vcenterSpec": {
+    "vcenterHostname": "mgmt-vc",
+    "rootVcenterPassword": "VMware1!VMware1!",
+    "vmSize": "small",
+    "storageSize": "",
+    "adminUserSsoPassword": "VMware1!VMware1!",
+    "ssoDomain": "vsphere.local",
+    "useExistingDeployment": false
+  },
+  "hostSpecs": [
+    {
+      "hostname": "esx01",
+      "credentials": {
+        "username": "root",
+        "password": "VMwareVCF9!"
+      }
+    },
+    {
+      "hostname": "esx02",
+      "credentials": {
+        "username": "root",
+        "password": "VMwareVCF9!"
+      }
+    },
+    {
+      "hostname": "esx03",
+      "credentials": {
+        "username": "root",
+        "password": "VMwareVCF9!"
+      }
+    },
+    {
+      "hostname": "esx04",
+      "credentials": {
+        "username": "root",
+        "password": "VMwareVCF9!"
+      }
+    }
+  ],
+  "clusterSpec": {
+    "clusterName": "mgmt-cl01",
+    "datacenterName": "mgmt-dc",
+    "clusterEvcMode": "",
+    "clusterImageEnabled": true
+  },
+  "datastoreSpec": {
+    "vsanSpec": {
+      "failuresToTolerate": 0,
+      "vsanDedup": false,
+      "esaConfig": {
+        "enabled": true
+      },
+      "datastoreName": "vsanDatastore"
+    }
+  },
+  "nsxtSpec": {
+    "nsxtManagerSize": "medium",
+    "nsxtManagers": [
+      {
+        "hostname": "nsx01a"
+      }
+    ],
+    "vipFqdn": "nsx01",
+    "useExistingDeployment": false,
+    "nsxtAdminPassword": "VMware1!VMware1!",
+    "nsxtAuditPassword": "VMware1!VMware1!",
+    "rootNsxtManagerPassword": "VMware1!VMware1!",
+    "skipNsxOverlayOverManagementNetwork": true,
+    "ipAddressPoolSpec": {
+      "name": "tep01",
+      "description": "ESXi Host Overlay TEP IP Pool",
+      "subnets": [
+        {
+          "ipAddressPoolRanges": [
+            {
+              "end": "10.2.104.118",
+              "start": "10.2.104.101"
+            }
+          ],
+          "gateway": "10.2.104.1",
+          "cidr": "10.2.104.0/24"
+        }
+      ]
+    },
+    "transportVlanId": "104"
+  },
+  "vcfOperationsSpec": {
+    "nodes": [
+      {
+        "type": "master",
+        "rootUserPassword": "VMware1!VMware1!",
+        "hostname": "ops"
+      }
+    ],
+    "adminUserPassword": "VMware1!VMware1!",
+    "applianceSize": "small",
+    "useExistingDeployment": false,
+    "loadBalancerFqdn": ""
+  },
+  "vcfOperationsFleetManagementSpec": {
+    "hostname": "opsfm01",
+    "rootUserPassword": "VMware1!VMware1!",
+    "adminUserPassword": "VMware1!VMware1!",
+    "useExistingDeployment": false
+  },
+  "vcfOperationsCollectorSpec": {
+    "hostname": "opsproxy01",
+    "applicationSize": "small",
+    "rootUserPassword": "VMware1!VMware1!",
+    "useExistingDeployment": false
+  },
+  "vcfAutomationSpec": {
+    "hostname": "auto01",
+    "adminUserPassword": "VMware1!VMware1!",
+    "ipPool": [
+      "10.2.101.108",
+      "10.2.101.109"
+    ],
+    "nodePrefix": "auto01",
+    "internalClusterCidr": "198.18.0.0/15",
+    "useExistingDeployment": false
+  },
+  "networkSpecs": [
+    {
+      "networkType": "MANAGEMENT",
+      "subnet": "10.2.100.0/24",
+      "gateway": "10.2.100.1",
+      "subnetMask": null,
+      "includeIpAddress": null,
+      "includeIpAddressRanges": null,
+      "vlanId": "100",
+      "mtu": "1500",
+      "teamingPolicy": "loadbalance_loadbased",
+      "activeUplinks": [
+        "uplink1",
+        "uplink2"
+      ],
+      "standbyUplinks": [],
+      "portGroupKey": "ESX_MANAGEMENT"
+    },
+    {
+      "networkType": "VM_MANAGEMENT",
+      "subnet": "10.2.101.0/24",
+      "gateway": "10.2.101.1",
+      "subnetMask": null,
+      "includeIpAddress": null,
+      "includeIpAddressRanges": null,
+      "vlanId": "101",
+      "mtu": "1500",
+      "teamingPolicy": "loadbalance_loadbased",
+      "activeUplinks": [
+        "uplink1",
+        "uplink2"
+      ],
+      "standbyUplinks": [],
+      "portGroupKey": "VM_MANAGEMENT"
+    },
+    {
+      "networkType": "VMOTION",
+      "subnet": "10.2.102.0/24",
+      "gateway": "10.2.102.1",
+      "subnetMask": null,
+      "includeIpAddress": null,
+      "includeIpAddressRanges": [
+        {
+          "endIpAddress": "10.2.102.118",
+          "startIpAddress": "10.2.102.101"
+        }
+      ],
+      "vlanId": "101",
+      "mtu": "8900",
+      "teamingPolicy": "loadbalance_loadbased",
+      "activeUplinks": [
+        "uplink1",
+        "uplink2"
+      ],
+      "standbyUplinks": [],
+      "portGroupKey": "VMOTION"
+    },
+    {
+      "networkType": "VSAN",
+      "subnet": "10.2.103.0/24",
+      "gateway": "10.2.103.1",
+      "subnetMask": null,
+      "includeIpAddress": null,
+      "teamingPolicy": "loadbalance_loadbased",
+      "includeIpAddressRanges": [
+        {
+          "endIpAddress": "10.2.103.118",
+          "startIpAddress": "10.2.103.101"
+        }
+      ],
+      "vlanId": "103",
+      "mtu": "8900",
+      "activeUplinks": [
+        "uplink1",
+        "uplink2"
+      ],
+      "standbyUplinks": [],
+      "portGroupKey": "VSAN"
+    }
+  ],
+  "dvsSpecs": [
+    {
+      "dvsName": "sddc1-cl01-vds01",
+      "networks": [
+        "MANAGEMENT",
+        "VM_MANAGEMENT",
+        "VMOTION",
+        "VSAN"
+      ],
+      "mtu": "8900",
+      "nsxtSwitchConfig": {
+        "transportZones": [
+          {
+            "name": "VCF-Created-Overlay-Zone",
+            "transportType": "OVERLAY"
+          }
+        ],
+        "hostSwitchOperationalMode": "STANDARD"
+      },
+      "vmnicsToUplinks": [
+        {
+          "uplink": "uplink1",
+          "id": "vmnic0"
+        },
+        {
+          "uplink": "uplink2",
+          "id": "vmnic1"
+        }
+      ],
+      "nsxTeamings": [
+        {
+          "activeUplinks": [
+            "uplink1",
+            "uplink2"
+          ],
+          "policy": "LOADBALANCE_SRCID",
+          "standByUplinks": []
+        }
+      ],
+      "lagSpecs": null,
+      "vmnics": [
+        "vmnic0",
+        "vmnic1"
+      ]
+    }
+  ]
+}

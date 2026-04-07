@@ -1,0 +1,113 @@
+Shared VCF/VVF Environment Configuration Summary
+================================================
+Generated: 2025-11-21 10:14:33
+
+IMPORTANT: Edge and BGP configuration is now INTEGRATED
+into the VCFDeploymentConfig.ps1 file!
+
+================================
+DNS Zones Created
+================================
+VCF Zone: vcf.lab.io
+VVF Zone: vvf.lab.io
+
+VCF Reverse Zone: 100.2.10.in-addr.arpa
+VVF Reverse Zone: 100.3.10.in-addr.arpa
+
+================================
+VCF Hosts and IPs
+================================
+vcfinst.vcf.lab.io - 10.2.100.10
+esx01.vcf.lab.io - 10.2.100.11
+esx02.vcf.lab.io - 10.2.100.12
+esx03.vcf.lab.io - 10.2.100.13
+esx04.vcf.lab.io - 10.2.100.14
+esx05.vcf.lab.io - 10.2.100.15
+esx06.vcf.lab.io - 10.2.100.16
+sddc.vcf.lab.io - 10.2.100.21
+ops.vcf.lab.io - 10.2.100.22
+m01vc.vcf.lab.io - 10.2.100.23
+nsx01.vcf.lab.io - 10.2.100.24
+nsx01a.vcf.lab.io - 10.2.100.25
+opsproxy01.vcf.lab.io - 10.2.100.30
+opsfm01.vcf.lab.io - 10.2.100.31
+m01edge01.vcf.lab.io - 10.2.100.32
+m01edge02.vcf.lab.io - 10.2.100.33
+auto01.vcf.lab.io - 10.2.100.34
+wld01vc.vcf.lab.io - 10.2.100.40
+nsx02.vcf.lab.io - 10.2.100.41
+nsx02a.vcf.lab.io - 10.2.100.42
+wldedge01.vcf.lab.io - 10.2.100.43
+wldesge02.vcf.lab.io - 10.2.100.45
+
+================================
+VVF Hosts and IPs
+================================
+vvfinst.vvf.lab.io - 10.3.100.10
+esx01.vvf.lab.io - 10.3.100.11
+esx02.vvf.lab.io - 10.3.100.12
+esx03.vvf.lab.io - 10.3.100.13
+vc.vvf.lab.io - 10.3.100.14
+ops.vvf.lab.io - 10.3.100.15
+
+================================
+VCF Network Details
+================================
+ESXi MGMT:     10.2.100.0/24 (Gateway: 10.2.100.1) - VLAN 2100
+vMotion:       10.2.110.0/24 (Gateway: 10.2.110.1) - VLAN 2110
+vSAN:          10.2.120.0/24 (Gateway: 10.2.120.1) - VLAN 2120
+HOST TEP:      10.2.130.0/24 (Gateway: 10.2.130.1) - VLAN 2130
+EDGE TEP:      10.2.140.0/24 (Gateway: 10.2.140.1) - VLAN 2140
+EDGE UPLINK 1: 192.168.168.0/31 (Gateway: 192.168.168.0) - VLAN 2150
+EDGE UPLINK 2: 192.168.68.0/31 (Gateway: 192.168.68.0) - VLAN 2160
+
+================================
+VCF Edge Cluster Configuration
+================================
+Management Edge Cluster:
+  - m01edge01.vcf.lab.io
+    Mgmt: 10.2.100.32
+    TEP:  10.2.140.32, 10.2.140.33
+    Uplink1: 192.168.168.1/31 <-> 192.168.168.0 (VyOS)
+    Uplink2: 192.168.68.1/31 <-> 192.168.68.0 (VyOS)
+  - m01edge02.vcf.lab.io
+    Mgmt: 10.2.100.33
+    TEP:  10.2.140.34, 10.2.140.35
+    Uplink1: 192.168.168.3/31 <-> 192.168.168.2 (VyOS)
+    Uplink2: 192.168.68.3/31 <-> 192.168.68.2 (VyOS)
+
+Workload Edge Cluster:
+  - wldedge01.vcf.lab.io
+    Mgmt: 10.2.100.43
+    TEP:  10.2.140.43, 10.2.140.44
+    Uplink1: 192.168.168.5/31 <-> 192.168.168.4 (VyOS)
+    Uplink2: 192.168.68.5/31 <-> 192.168.68.4 (VyOS)
+  - wldesge02.vcf.lab.io
+    Mgmt: 10.2.100.45
+    TEP:  10.2.140.45, 10.2.140.46
+    Uplink1: 192.168.168.7/31 <-> 192.168.168.6 (VyOS)
+    Uplink2: 192.168.68.7/31 <-> 192.168.68.6 (VyOS)
+
+================================
+BGP Configuration
+================================
+Router ASN:        65000 (VyOS)
+Mgmt Edge ASN:     65001
+Workload Edge ASN: 65002
+BGP Password:      VMware1!
+
+================================
+VVF Network Details
+================================
+ESXi MGMT: 10.3.100.0/24 (Gateway: 10.3.100.1) - VLAN 3100
+vMotion:   10.3.110.0/24 (Gateway: 10.3.110.1) - VLAN 3110
+vSAN:      10.3.120.0/24 (Gateway: 10.3.120.1) - VLAN 3120
+
+================================
+Files Generated
+================================
+VCF Unified Config: C:\vcf_deploy\SharedConfigs\VCFDeploymentConfig.ps1
+  (Includes: Network, Edge, BGP)
+VVF Config: C:\vcf_deploy\SharedConfigs\VVFDeploymentConfig.ps1
+VyOS Configuration: C:\vcf_deploy\SharedConfigs\VyOSConfig.txt
+Summary: C:\vcf_deploy\SharedConfigs\Summary.txt
